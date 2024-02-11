@@ -18,9 +18,7 @@ const ContactForm: FC = memo(() => {
     }),
     [],
   );
-  const serviceId=process.env.NEXT_PUBLIC_SERVICE_ID! 
-  const templateId=process.env.NEXT_PUBLIC_TEMPLATE_ID!
-  const publicKey=process.env.NEXT_PUBLIC_KEY!
+ 
   const emailRef=useRef< HTMLFormElement>(null)
   const [data, setData] = useState<FormData>(defaultData);
 
@@ -38,9 +36,10 @@ const ContactForm: FC = memo(() => {
   const handleSendMessage = useCallback(
     async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      
-     console.log("TemplateID ")
-     console.log(templateId)
+      const serviceId=process.env.NEXT_PUBLIC_SERVICE_ID! 
+      const templateId=process.env.NEXT_PUBLIC_TEMPLATE_ID!
+      const publicKey=process.env.NEXT_PUBLIC_KEY!
+     
       emailjs
         .sendForm(serviceId, templateId, emailRef.current!, {
           publicKey: publicKey,
