@@ -1,4 +1,7 @@
-import {FC, memo, useCallback, useMemo, useState} from 'react';
+import {FC, memo, useCallback, useMemo, useState,useRef} from 'react';
+import emailjs from '@emailjs/browser';
+
+
 
 interface FormData {
   name: string;
@@ -15,7 +18,10 @@ const ContactForm: FC = memo(() => {
     }),
     [],
   );
-
+  const serviceId=process.env.NEXT_PUBLIC_SERVICE_ID! 
+  const templateId=process.env.NEXT_PUBLIC_TEMPLATE_ID!
+  const publicKey=process.env.NEXT_PUBLIC_KEY!
+  const emailRef=useRef< HTMLFormElement>(null)
   const [data, setData] = useState<FormData>(defaultData);
 
   const onChange = useCallback(
@@ -32,6 +38,21 @@ const ContactForm: FC = memo(() => {
   const handleSendMessage = useCallback(
     async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
+      
+     console.log("TemplateID ")
+     console.log(templateId)
+      emailjs
+        .sendForm(serviceId, templateId, emailRef.current!, {
+          publicKey: publicKey,
+        })
+        .then(
+          () => {
+            console.log('SUCCESS!');
+          },
+          (error) => {
+            console.log('FAILED...', error.text);
+          },
+        );
       /**
        * This is a good starting point to wire up your form submission logic
        * */
@@ -44,12 +65,12 @@ const ContactForm: FC = memo(() => {
     'bg-neutral-700 border-0 focus:border-0 focus:outline-none focus:ring-1 focus:ring-orange-600 rounded-md placeholder:text-neutral-400 placeholder:text-sm text-neutral-200 text-sm';
 
   return (
-    <form className="grid min-h-[320px] grid-cols-1 gap-y-4" method="POST" onSubmit={handleSendMessage}>
-      <input className={inputClasses} name="name" onChange={onChange} placeholder="Name" required type="text" />
+    <form className="grid min-h-[320px] grid-cols-1 gap-y-4" method="POST" onSubmit={handleSendMessage} ref={emailRef}>
+      <input className={inputClasses} name="user_name" onChange={onChange} placeholder="Name" required type="text" />
       <input
         autoComplete="email"
         className={inputClasses}
-        name="email"
+        name="user_email"
         onChange={onChange}
         placeholder="Email"
         required

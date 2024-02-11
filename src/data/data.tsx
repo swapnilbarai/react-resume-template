@@ -19,6 +19,8 @@ import porfolioImage3 from '../images/portfolio/portfolio-3.jpg';
 import porfolioImage4 from '../images/portfolio/portfolio-4.jpg';
 import profilepic from '../images/profilepic.jpg';
 import testimonialImage from '../images/testimonial.webp';
+import test1 from '../images/portfolio/ankit.jpg';
+
 import {
   About,
   ContactSection,
@@ -72,7 +74,7 @@ export const heroData: Hero = {
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
         During my free time, you can find me at <strong className="text-stone-100">Cricket Ground</strong>, or cruising
         around on my <strong className="text-stone-100">MotorBike</strong>,exploring the scenic landscapes of
-        <strong className="text-stone-100"> Northen India </strong>.
+        <strong className="text-stone-100"> Northern India </strong>.
       </p>
     </>
   ),
@@ -342,18 +344,17 @@ export const testimonial: TestimonialSection = {
   imageSrc: testimonialImage,
   testimonials: [
     {
-      name: 'John Doe',
-      text: 'Use this as an opportunity to promote what it is like to work with you. High value testimonials include ones from current or past co-workers, managers, or from happy clients.',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/169.jpg',
+      name: 'Ankit Kumar',
+      text: 'Employs Scala expertise to craft robust solutions, blending technical acumen with Scala powerful capabilities for seamless development.',
+      image:test1,
     },
     {
-      name: 'Jane Doe',
-      text: 'Here you should write some nice things that someone has said about you. Encourage them to be specific and include important details (notes about a project you were on together, impressive quality produced, etc).',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/14.jpg',
+      name: 'Sourabh Verma',
+      text: 'A dynamic coworker who excels in swiftly mastering new technologies and problem-solving with finesse'
     },
     {
       name: 'Someone else',
-      text: 'Add several of these, and keep them as fresh as possible, but be sure to focus on quality testimonials with strong highlights of your skills/work ethic.',
+      text: 'A self-motivated team player, Swapnil adeptly navigates technical challenges with minimal support, showcasing resilience and a proactive approach to problem-solving.',
       image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/69.jpg',
     },
   ],
